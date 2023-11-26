@@ -1,0 +1,124 @@
+---
+- summary: |
+    Проверка регистрации нового пользователя
+  status: pass
+
+- summary: |
+    Проверка валидации при регистрации нового пользователя
+  status: pass
+
+- summary: |
+    Проверка авторизации
+  status: pass
+
+- summary: |
+    Проверка восстановления пароля
+  status: pass
+
+- summary: |
+    Проверка смены пароля у пользователя
+  status: fail
+
+- summary: |
+    Проверка работы чата
+  status: pass
+
+- summary: |
+    Проверка поле ввода чата на xss уязвимость
+  status: pass
+
+- summary: |
+    Проверка работы смены 'Nikname' пользователя
+  status: pass
+
+- summary: |
+    Проверка просмотра рейтингов всех пользователей
+  status: pass
+
+- summary: |
+    Проверка добавления новой TASK
+  status: pass
+
+- summary: |
+    Проверка выхода из учетной записи
+  status: pass
+
+- summary: |
+    Проверка перехода в сообщество codebattle в discord
+  status: pass
+
+- summary: |
+    Проверка перехода в сообщество codebattle в telegram
+  status: pass
+
+- summary: |
+    Проверка просмотра чужих сыграных игр
+  status: pass
+
+- summary: |
+    Проверка запуска пробной игры у неавторизованного пользователя
+  status: pass
+
+- summary: |
+    Проверка авторизации через github
+  status: pass
+
+- summary: |
+    Проверка авторизации через discord
+  status: pass
+
+- summary: |
+    Проверка просмотра чужой игры в настоящем времени
+  status: pass
+
+- summary: |
+    Создание игры против бота
+  status: pass
+
+- summary: |
+    Создать игру и пригласить другого игрока
+  status: pass
+
+- summary: |
+    Создать игру, к которой может присоедениться любой игрок в лобби
+  status: pass
+
+- summary: |
+    Сдаться во время игры
+  status: pass
+
+- summary: |
+    Отказаться от приглашения игры
+  status: pass
+
+- summary: |
+    Написать сообщение пользователю в чате лобби
+  status: pass
+
+- summary: |
+    Написать сообщение в чате во время игры
+  status: pass
+
+- summary: |
+    Сменить язык программирования во время игры
+  status: pass
+
+- summary: |
+    Проверка мобильной версии и адаптивность верстки
+  status: pass
+
+- summary: |
+    Проверка одинаковое ли время у пользователей для решения задачи
+  status: pass
+
+- summary: |
+    Проверка закончится ли игра, если время для решения задачи закончится
+  status: pass
+
+- summary: |
+    Проверка может ли пользователь запустиь сразу две игры
+  status: pass
+
+- summary: |
+    Проверка может ли пользователь удалить свой аккаунт
+  status: fail

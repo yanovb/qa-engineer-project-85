@@ -1,0 +1,502 @@
+---
+- summary: |
+    Проверка регистрации нового пользователя
+  requirement: >
+    После нажатия на 'Sing up' и заполнения полей должен появиться
+    новый пользователь
+  prerequisites: |
+    Открыта начальная страница (https://codebattle.hexlet.io)
+  test-data: |
+    Nickname: 't80069125'
+    Email: 't80069125@gmail.com'
+    Password: '123456789'
+  steps:
+    - Нажать на 'Sing up'
+    - Заполнить поля 'Nickname', 'Email', 'Password' и 'Password Confirmation'
+    - Нажать на 'Submit'
+  expected-result: >
+    Должен отправиться запрос с данными, а после появиться уже
+    авторизованный новый пользователь
+
+- summary: |
+    Проверка валидации при регистрации нового пользователя
+  requirement: >
+    В случае неверной валидации 'Nickname', 'Email', 'Password' или
+    'Password Confirmation' должна появиться ошибка
+  prerequisites: |
+    Открыта начальная страница (https://codebattle.hexlet.io)
+  test-data: |
+    Nickname: '1234'
+    Email: 'test@testcom'
+    Password: '4321'
+    Password Confirmation: '43210'
+  steps:
+    - Нажать на 'Sing up'
+    - Заполнить поля 'Nickname', 'Email', 'Password' и 'Password Confirmation'
+    - Нажать на 'Submit'
+  expected-result: >
+    Должна появится ошибка валидации для 'Nickname', 'Email',
+    'Password' и 'Password Confirmation'
+
+- summary: |
+    Проверка авторизации
+  requirement: >
+    После нажатия на 'Sign in', введения данных пользователя и нажатия
+    на 'Submit' должна произойти авторизация
+  prerequisites: |
+    Открыта начальная страница (https://codebattle.hexlet.io)
+  test-data: |
+    Nickname: 't80069125'
+    Email: 't80069125@gmail.com'
+    Password: '123456789'
+  steps:
+    - Нажать на 'Sing in'
+    - Заполнить поля 'Nickname', 'Email', 'Password'
+    - Нажать на 'Submit'
+  expected-result: |
+    Должен появится авторизованный пользователь
+
+- summary: |
+    Проверка восстановления пароля
+  requirement: >
+    Нажать на 'Sign in', потом на 'Forgot your password?', указать
+    email, после на указанную почту должна прийти инструкция по восстановлению
+    пароля, пройдя которую можно установить заново новый пароль
+  prerequisites: |
+    Открыта начальная страница (https://codebattle.hexlet.io)
+  test-data: |
+    Email: 'galimyanovb@gmail.com'
+  steps:
+    - Нажать на 'Sing in'
+    - Нажать на  'Forgot your password?'
+    - Нажать на 'Submit'
+    - null
+  expected-result: |
+    Должна появится авторизованный пользователь
+
+- summary: |
+    Проверка смены пароля у пользователя
+  requirement: |
+    В настройках пользователь может сменить пароль
+  prerequisites: |
+    Открыто лобби у пользователя (https://codebattle.hexlet.io/#lobby)
+  steps:
+    - Нажать на иконку пользователя
+    - Нажать 'Settings'
+  expected-result: |
+    В настройках пользователь должен иметь возможность сменить пароль
+
+- summary: |
+    Проверка работы чата
+  requirement: |
+    В лобби авторизованный пользователь может написать сообщение в чате
+  prerequisites: |
+    Открыто лобби у пользователя (https://codebattle.hexlet.io/#lobby)
+  steps:
+    - Нажать поле ввода текста в чате
+    - Вбить любой текст без javascript кода
+    - Нажать 'Send' или клавишу 'Enter'
+  expected-result: |
+    В чате должно появиться набранное сообщение пользователя
+
+- summary: |
+    Проверка поле ввода чата на xss уязвимость
+  requirement: >
+    В лобби авторизованный пользователь может написать сообщение в
+    чате, javascript код должен отобразиться как обычный текст
+  prerequisites: |
+    Открыто лобби у пользователя (https://codebattle.hexlet.io/#lobby)
+  steps:
+    - Нажать поле ввода текста в чате
+    - Вбить '<html><p><script>alert(1)</script></p></html>'
+    - Нажать 'Send' или клавишу 'Enter'
+  expected-result: |
+    В чате должно появиться javascript код как обычный текст
+
+- summary: |
+    Проверка работы смены 'Nikname' пользователя
+  requirement: |
+    В настройках пользователь может сменить свой 'Nikname'
+  prerequisites: |
+    Открыто лобби у пользователя (https://codebattle.hexlet.io/#lobby)
+  test-data: |
+    Nickname: 'changenametest'
+  steps:
+    - Нажать на иконку пользователя
+    - Нажать 'Settings'
+    - Вбить 'changenametest' в поле 'Your name'
+    - Нажать 'save'
+  expected-result: >
+    Должна появиться надпись о смене имени пользователя и после
+    обновления страницы в правом верхнем углу будет отображаться новое имя
+    пользователя
+
+- summary: |
+    Проверка просмотра рейтингов всех пользователей
+  requirement: |
+    В лобби авторизованный пользователь может посмотреть рейтинги всех игроков
+  prerequisites: |
+    Открыто лобби у пользователя (https://codebattle.hexlet.io/#lobby)
+  steps:
+    - Нажать на 'TOP list' в лобби
+    - В поле 'Username' указать 'changenametest'
+    - Нажать клавишу 'Enter'
+  expected-result: >
+    После нажатия на 'TOP list' в лобби должен отобразиться рейтинг
+    всех игроков в порядке убывания, после второго шага отобразиться рейтинг
+    игрока с указанным в поле username
+
+- summary: |
+    Проверка добавления новой TASK
+  requirement: |
+    В лобби авторизованный пользователь может добавить свою новую TASK
+  prerequisites: |
+    Открыто лобби у пользователя (https://codebattle.hexlet.io/#lobby)
+  steps:
+    - Нажать на иконку пользователя
+    - Нажать Tasks
+    - Нажать Create New Task
+    - В поле Task указываем наименование Task 'newTestTask'
+    - В поле Description указываем 'test'
+    - Меняем язык Description и указываем ru
+    - В поле Description указываем 'test'
+    - Нажать add input parameter
+    - В поле Name указать 'a'
+    - Нажать Submit
+    - В поле Name указать 'b'
+    - Нажать Submit
+    - Нажать  Step 2
+    - Нажать Add example
+    - В первом поле Example Value Edit указываем [1, 1]
+    - Во втором поле Example Value Edit указываем 2
+    - В первом поле Example Value Edit указываем [2, 3]
+    - Во втором поле Example Value Edit указываем 5
+    - В первом поле Example Value Edit указываем [6, 8]
+    - Во втором поле Example Value Edit указываем 14
+    - В step 3 внутри возвращаемого массива generate указываем Math.random() *
+      (9 - 1) + 1, Math.random() * (9 - 1) + 1
+    - В step 4 в аргументы функции solution указать a, b
+    - В step 4 в теле функции solution указываем  return a + b
+    - Нажимаем Save
+    - В появившемся окне нажимаем Confirm
+    - Нажимаем на иконку пользователя
+    - Нажимаем Tasks
+  expected-result: |
+    Должна отобразиться новая добавленная таска
+
+- summary: |
+    Проверка выхода из учетной записи
+  requirement: |
+    Любой авторизованный пользователь может выйти из своей учетной записи
+  prerequisites: |
+    Открыто лобби у пользователя (https://codebattle.hexlet.io/#lobby)
+  steps:
+    - Нажать на иконку пользователя
+    - Нажать Sign Out
+  expected-result: |
+    Должны оказаться на начальной странице (https://codebattle.hexlet.io)
+
+- summary: |
+    Проверка перехода в сообщество codebattle в discord
+  requirement: >
+    Любой авторизованный пользователь может перейти в сообщество
+    codebattle в discord
+  prerequisites: |
+    Открыто лобби у пользователя (https://codebattle.hexlet.io/#lobby)
+  steps:
+    - Нажать на иконку пользователя
+    - Нажать Join Discord
+  expected-result: |
+    Пользователя должно переслать на сообщество codebattle в discord
+
+- summary: |
+    Проверка перехода в сообщество codebattle в telegram
+  requirement: >
+    Любой авторизованный пользователь может перейти в сообщество
+    codebattle в telegram
+  prerequisites: |
+    Открыто лобби у пользователя (https://codebattle.hexlet.io/#lobby)
+  steps:
+    - Нажать на иконку пользователя
+    - Нажать Tg#codebattle
+  expected-result: |
+    Пользователя должно переслать на сообщество codebattle в telegram
+
+- summary: |
+    Проверка просмотра чужих сыгранных игр
+  requirement: >
+    Любой авторизованный пользователь может просмотреть сыгранные игры
+    других игроков
+  prerequisites: |
+    Открыто лобби у пользователя (https://codebattle.hexlet.io/#lobby)
+  steps:
+    - Нажать COMPLETED GAMES
+    - Нажать Show на любой из выбранных игр
+  expected-result: |
+    Должна открыться уже сыгранная игра других двух игроков
+
+- summary: |
+    Проверка запуска пробной игры у неавторизованного пользователя
+  requirement: |
+    Любой неавторизованный пользователь может сыграть пробную игру
+  prerequisites: |
+    Открыта начальная страница (https://codebattle.hexlet.io)
+  steps:
+    - Нажать TRY SIMPLE BATTLE
+  expected-result: |
+    Должна открыться игра против бота
+
+- summary: |
+    Проверка авторизации через github
+  requirement: |
+    Любой пользователь может пройти авторизацию через github
+  prerequisites: |
+    Открыта начальная страница (https://codebattle.hexlet.io)
+  steps:
+    - Нажать Sign in
+    - Нажать Sign in with Github
+    - Пройти авторизацию на Github
+  expected-result: >
+    Пользователь должен авторизоваться и перейти в лобби
+    (https://codebattle.hexlet.io/#lobby)
+
+- summary: |
+    Проверка авторизации через discord
+  requirement: |
+    Любой пользователь может пройти авторизацию через discord
+  prerequisites: |
+    Открыта начальная страница (https://codebattle.hexlet.io)
+  steps:
+    - Нажать Sign in
+    - Нажать Sign in with Discord
+    - Пройти авторизацию на discord
+  expected-result: >
+    Пользователь должен авторизоваться и перейти в лобби
+    (https://codebattle.hexlet.io/#lobby)
+
+- summary: |
+    Проверка просмотра чужой игры в настоящем времени
+  requirement: >
+    Любой авторизованный пользователь может просматривать игры, которые
+    идут в настоящем времени
+  prerequisites: |
+    Открыто лобби у пользователя (https://codebattle.hexlet.io/#lobby)
+  steps:
+    - Нажать Show, если есть такая игра в настоящем времени
+  expected-result: >
+    Должна открыться игра других двух игроков, которые играют в настоящем времени
+
+- summary: |
+    Создание игры против бота
+  requirement: |
+    Любой авторизованный пользователь может создать и сыграть игру против бота
+  prerequisites: |
+    Открыто лобби у пользователя (https://codebattle.hexlet.io/#lobby)
+  steps:
+    - Нажимаем CREATE A GAME
+    - В Game Type выбираем With a bot
+    - Нажимаем Create battle
+  expected-result: |
+    Должна запуститься игра против бота
+
+- summary: |
+    Создать игру и пригласить другого игрока
+  requirement: >
+    Любой авторизованный пользователь может создать игру и пригласить
+    другого игрока
+  prerequisites: >
+    Открыто лобби у первого и второго пользователя
+    (https://codebattle.hexlet.io/#lobby)
+  steps:
+    - Нажимаем CREATE A GAME
+    - В Game Type выбираем With a friend
+    - В Choose opponent указываем никнейм changenametest
+    - Нажимаем Create invite
+    - Вторым игроком нажимаем на иконку двух мечей сверху в правом углу и
+      нажимаем accept
+  expected-result: |
+    Должна запуститься игра против второго игрока
+
+- summary: |
+    Создать игру, к которой может присоединиться любой игрок в лобби
+  requirement: >
+    Любой авторизованный пользователь может создать игру, к которой
+    может присоединиться любой игрок в лобби
+  prerequisites: >
+    Открыто лобби у первого и второго пользователя
+    (https://codebattle.hexlet.io/#lobby)
+  steps:
+    - Нажимаем CREATE A GAME
+    - В Game Type выбираем With other users
+    - Нажимаем Create battle
+    - Вторым игроком нажимаем fight
+  expected-result: |
+    Должна запуститься игра против второго игрока
+
+- summary: |
+    Сдаться во время игры
+  requirement: |
+    Пользователь сдаться во время игры
+  prerequisites: |
+    Открыто лобби у пользователя (https://codebattle.hexlet.io/#lobby)
+  steps:
+    - Нажимаем CREATE A GAME
+    - В Game Type выбираем With a bot
+    - Нажимаем Create battle
+    - Во время игры нажимаем на Give Up
+    - Нажимаем на Give Up в открывшемся окне
+  expected-result: |
+    Игра должна завершиться поражением
+
+- summary: |
+    Отказаться от приглашения игры
+  requirement: |
+    Пользователь может отказаться от приглашения к игре
+  prerequisites: >
+    Открыто лобби у первого и второго пользователя
+    (https://codebattle.hexlet.io/#lobby)
+  steps:
+    - Нажимаем CREATE A GAME
+    - В Game Type выбираем With a friend
+    - В Choose opponent указываем никнейм changenametest
+    - Нажимаем Create invite
+    - Вторым игроком нажимаем на иконку двух мечей сверху в правом углу и
+      нажимаем decline
+  expected-result: >
+    Игра не должна начаться у первого пользователя должна появиться
+    надпись в чате Invite has been canceled, у второго пользователя должна
+    появиться надпись You decline battle invite 
+
+- summary: |
+    Написать сообщение пользователю в чате лобби
+  requirement: |
+    Пользователь может написать личное сообщение другому пользователю
+  prerequisites: >
+    Открыто лобби у первого и второго пользователя
+    (https://codebattle.hexlet.io/#lobby)
+  steps:
+    - Первым пользователем нажимаем на никнейм второго пользователя в чате в
+      лобби
+    - В появившемся окне нажимаем Direct message
+    - Пишем любой текст в форме для текста и нажимаем Send
+  expected-result: >
+    После нажатия на кнопку Direct message должен появиться никнейм
+    второго пользователя в списке выбора каналов в чате. После того как введем
+    текст и нажимаем Send сообщение должно появиться в чате
+
+- summary: |
+    Написать сообщение в чате во время игры
+  requirement: |
+    Пользователь может написать сообщение в чате во время игры
+  prerequisites: >
+    Открыто лобби у первого и второго пользователя
+    (https://codebattle.hexlet.io/#lobby)
+  steps:
+    - Нажимаем CREATE A GAME
+    - В Game Type выбираем With a friend
+    - В Choose opponent указываем никнейм changenametest
+    - Нажимаем Create invite
+    - Вторым игроком нажимаем на иконку двух мечей сверху в правом углу и
+      нажимаем accept
+    - После запуска игры пишем сообщение и нажимаем Send
+  expected-result: |
+    Должно отправиться сообщение в чате игры
+
+- summary: |
+    Сменить язык программирования во время игры
+  requirement: >
+    Пользователь может сменить язык программирования для решения задачи
+    во время игры
+  prerequisites: |
+    Открыта начальная страница (https://codebattle.hexlet.io)
+  steps:
+    - Нажимаем CREATE A GAME
+    - В Game Type выбираем With a bot
+    - Нажимаем Create battle
+    - Нажать на выбранный язык программирования на данный момент
+    - Выбрать другой язык программирования
+  expected-result: |
+    Должен смениться язык программирования для решения задачи
+
+- summary: |
+    Проверка мобильной версии и адаптивности верстки
+  requirement: |
+    Приложение должно быть доступно на различных устройствах
+  prerequisites: |
+    Открыта начальная страница (https://codebattle.hexlet.io)
+  steps:
+    - Открываем Dev tools
+    - Выбираем toggle device toolbar
+    - Выбираем различные параметры соотношения экрана
+    - Выбираем различные мобильные устройства
+    - Запускаем игру
+  expected-result: |
+    Верстка должна подстроиться под иной формат окна
+
+- summary: |
+    Проверка одинаковое ли время у пользователей для решения задачи
+  requirement: |
+    У пользователей на решения задачи должно быть одинаковое время
+  prerequisites: >
+    Открыто лобби у первого и второго пользователя
+    (https://codebattle.hexlet.io/#lobby)
+  steps:
+    - Нажимаем CREATE A GAME
+    - В Game Type выбираем With a friend
+    - В Choose opponent указываем никнейм changenametest
+    - Нажимаем Create invite
+    - Вторым игроком нажимаем на иконку двух мечей сверху в правом углу и
+      нажимаем accept
+  expected-result: >
+    Должна запуститься игра и у обоих пользователей должно быть
+    одинаковое время на решение задачи
+
+- summary: |
+    Проверка закончится ли игра, если время для решения задачи закончится
+  requirement: |
+    Игра должна завершиться, если время для решения задачи закончится
+  prerequisites: >
+    Открыто лобби у первого и второго пользователя
+    (https://codebattle.hexlet.io/#lobby)
+  steps:
+    - Нажимаем CREATE A GAME
+    - В Game Type выбираем With a friend
+    - В Choose opponent указываем никнейм changenametest
+    - Нажимаем Create invite
+    - Вторым игроком нажимаем на иконку двух мечей сверху в правом углу и
+      нажимаем accept
+  expected-result: >
+    Игра должна завершиться и должна появиться надпись Time is up.
+    There are no winners in the game
+
+- summary: |
+    Проверка может ли пользователь запустить сразу две игры
+  requirement: |
+    Пользователь не может запустить еще одну игру, если уже участвует в другой
+  prerequisites: >
+    Открыто лобби у первого и второго пользователя
+    (https://codebattle.hexlet.io/#lobby)
+  steps:
+    - Нажимаем CREATE A GAME
+    - В Game Type выбираем With a friend
+    - В Choose opponent указываем никнейм changenametest
+    - Нажимаем Create invite
+    - Вторым игроком нажимаем на иконку двух мечей сверху в правом углу и
+      нажимаем accept
+    - Первым пользователем выходим в лобби
+    - Нажимаем fight напротив любой игры в лобби
+  expected-result: |
+    Должна появиться ошибка already_in_a_game
+    
+- summary: |
+    Проверка может ли пользователь удалить свой аккаунт
+  requirement: |
+    У пользователя должна быть возможность удалить свой аккаунт
+  prerequisites: |
+    Открыта начальная страница (https://codebattle.hexlet.io)
+  steps:
+    - Нажимаем на иконку пользователя
+    - Нажимаем setting
+    - Удалям учетную запись
+  expected-result: |
+    В настройках должна быть возможность удалить учетную запись
