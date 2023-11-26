@@ -70,9 +70,8 @@
     - Нажать на 'Sing in'
     - Нажать на  'Forgot your password?'
     - Нажать на 'Submit'
-    - null
   expected-result: |
-    Должна появится авторизованный пользователь
+    Должен появится авторизованный пользователь
 
 - summary: |
     Проверка смены пароля у пользователя
@@ -80,6 +79,8 @@
     В настройках пользователь может сменить пароль
   prerequisites: |
     Открыто лобби у пользователя (https://codebattle.hexlet.io/#lobby)
+  test-data: |
+    нет
   steps:
     - Нажать на иконку пользователя
     - Нажать 'Settings'
@@ -92,6 +93,8 @@
     В лобби авторизованный пользователь может написать сообщение в чате
   prerequisites: |
     Открыто лобби у пользователя (https://codebattle.hexlet.io/#lobby)
+  test-data: |
+    нет
   steps:
     - Нажать поле ввода текста в чате
     - Вбить любой текст без javascript кода
@@ -106,6 +109,8 @@
     чате, javascript код должен отобразиться как обычный текст
   prerequisites: |
     Открыто лобби у пользователя (https://codebattle.hexlet.io/#lobby)
+  test-data: |
+    нет
   steps:
     - Нажать поле ввода текста в чате
     - Вбить '<html><p><script>alert(1)</script></p></html>'
@@ -137,6 +142,8 @@
     В лобби авторизованный пользователь может посмотреть рейтинги всех игроков
   prerequisites: |
     Открыто лобби у пользователя (https://codebattle.hexlet.io/#lobby)
+  test-data: |
+    нет
   steps:
     - Нажать на 'TOP list' в лобби
     - В поле 'Username' указать 'changenametest'
@@ -152,6 +159,8 @@
     В лобби авторизованный пользователь может добавить свою новую TASK
   prerequisites: |
     Открыто лобби у пользователя (https://codebattle.hexlet.io/#lobby)
+  test-data: |
+    нет
   steps:
     - Нажать на иконку пользователя
     - Нажать Tasks
@@ -190,6 +199,8 @@
     Любой авторизованный пользователь может выйти из своей учетной записи
   prerequisites: |
     Открыто лобби у пользователя (https://codebattle.hexlet.io/#lobby)
+  test-data: |
+    нет
   steps:
     - Нажать на иконку пользователя
     - Нажать Sign Out
@@ -203,6 +214,8 @@
     codebattle в discord
   prerequisites: |
     Открыто лобби у пользователя (https://codebattle.hexlet.io/#lobby)
+  test-data: |
+    нет
   steps:
     - Нажать на иконку пользователя
     - Нажать Join Discord
@@ -216,6 +229,8 @@
     codebattle в telegram
   prerequisites: |
     Открыто лобби у пользователя (https://codebattle.hexlet.io/#lobby)
+  test-data: |
+    нет
   steps:
     - Нажать на иконку пользователя
     - Нажать Tg#codebattle
@@ -229,6 +244,8 @@
     других игроков
   prerequisites: |
     Открыто лобби у пользователя (https://codebattle.hexlet.io/#lobby)
+  test-data: |
+    нет
   steps:
     - Нажать COMPLETED GAMES
     - Нажать Show на любой из выбранных игр
@@ -241,6 +258,8 @@
     Любой неавторизованный пользователь может сыграть пробную игру
   prerequisites: |
     Открыта начальная страница (https://codebattle.hexlet.io)
+  test-data: |
+    нет
   steps:
     - Нажать TRY SIMPLE BATTLE
   expected-result: |
@@ -252,6 +271,8 @@
     Любой пользователь может пройти авторизацию через github
   prerequisites: |
     Открыта начальная страница (https://codebattle.hexlet.io)
+  test-data: |
+    нет
   steps:
     - Нажать Sign in
     - Нажать Sign in with Github
@@ -266,6 +287,8 @@
     Любой пользователь может пройти авторизацию через discord
   prerequisites: |
     Открыта начальная страница (https://codebattle.hexlet.io)
+  test-data: |
+    нет
   steps:
     - Нажать Sign in
     - Нажать Sign in with Discord
@@ -281,6 +304,8 @@
     идут в настоящем времени
   prerequisites: |
     Открыто лобби у пользователя (https://codebattle.hexlet.io/#lobby)
+  test-data: |
+    нет
   steps:
     - Нажать Show, если есть такая игра в настоящем времени
   expected-result: |
@@ -292,6 +317,8 @@
     Любой авторизованный пользователь может создать и сыграть игру против бота
   prerequisites: |
     Открыто лобби у пользователя (https://codebattle.hexlet.io/#lobby)
+  test-data: |
+    нет
   steps:
     - Нажимаем CREATE A GAME
     - В Game Type выбираем With a bot
@@ -307,6 +334,8 @@
   prerequisites: >
     Открыто лобби у первого и второго пользователя
     (https://codebattle.hexlet.io/#lobby)
+  test-data: |
+    нет
   steps:
     - Нажимаем CREATE A GAME
     - В Game Type выбираем With a friend
@@ -325,6 +354,8 @@
   prerequisites: >
     Открыто лобби у первого и второго пользователя
     (https://codebattle.hexlet.io/#lobby)
+  test-data: |
+    нет
   steps:
     - Нажимаем CREATE A GAME
     - В Game Type выбираем With other users
@@ -339,6 +370,8 @@
     Пользователь сдаться во время игры
   prerequisites: |
     Открыто лобби у пользователя (https://codebattle.hexlet.io/#lobby)
+  test-data: |
+    нет
   steps:
     - Нажимаем CREATE A GAME
     - В Game Type выбираем With a bot
@@ -355,6 +388,8 @@
   prerequisites: >
     Открыто лобби у первого и второго пользователя
     (https://codebattle.hexlet.io/#lobby)
+  test-data: |
+    нет
   steps:
     - Нажимаем CREATE A GAME
     - В Game Type выбираем With a friend
@@ -374,6 +409,8 @@
   prerequisites: >
     Открыто лобби у первого и второго пользователя
     (https://codebattle.hexlet.io/#lobby)
+  test-data: |
+    нет
   steps:
     - Первым пользователем нажимаем на никнейм второго пользователя в чате в
       лобби
@@ -391,6 +428,8 @@
   prerequisites: >
     Открыто лобби у первого и второго пользователя
     (https://codebattle.hexlet.io/#lobby)
+  test-data: |
+    нет
   steps:
     - Нажимаем CREATE A GAME
     - В Game Type выбираем With a friend
@@ -409,6 +448,8 @@
     во время игры
   prerequisites: |
     Открыта начальная страница (https://codebattle.hexlet.io)
+  test-data: |
+    нет
   steps:
     - Нажимаем CREATE A GAME
     - В Game Type выбираем With a bot
@@ -424,6 +465,8 @@
     Приложение должно быть доступно на различных устройствах
   prerequisites: |
     Открыта начальная страница (https://codebattle.hexlet.io)
+  test-data: |
+    нет
   steps:
     - Открываем Dev tools
     - Выбираем toggle device toolbar
@@ -440,6 +483,8 @@
   prerequisites: >
     Открыто лобби у первого и второго пользователя
     (https://codebattle.hexlet.io/#lobby)
+  test-data: |
+    нет
   steps:
     - Нажимаем CREATE A GAME
     - В Game Type выбираем With a friend
@@ -458,6 +503,8 @@
   prerequisites: >
     Открыто лобби у первого и второго пользователя
     (https://codebattle.hexlet.io/#lobby)
+  test-data: |
+    нет
   steps:
     - Нажимаем CREATE A GAME
     - В Game Type выбираем With a friend
@@ -476,6 +523,8 @@
   prerequisites: >
     Открыто лобби у первого и второго пользователя
     (https://codebattle.hexlet.io/#lobby)
+  test-data: |
+    нет
   steps:
     - Нажимаем CREATE A GAME
     - В Game Type выбираем With a friend
@@ -494,6 +543,8 @@
     У пользователя должна быть возможность удалить свой аккаунт
   prerequisites: |
     Открыта начальная страница (https://codebattle.hexlet.io)
+  test-data: |
+    нет
   steps:
     - Нажимаем на иконку пользователя
     - Нажимаем setting
