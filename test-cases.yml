@@ -7,9 +7,7 @@
   prerequisites: |
     Открыта начальная страница (https://codebattle.hexlet.io)
   test-data: |
-    Nickname: 't80069125'
-    Email: 't80069125@gmail.com'
-    Password: '123456789'
+    Используем новую почту
   steps:
     - Нажать на 'Sing up'
     - Заполнить поля 'Nickname', 'Email', 'Password' и 'Password Confirmation'
@@ -54,7 +52,7 @@
     - Заполнить поля 'Nickname', 'Email', 'Password'
     - Нажать на 'Submit'
   expected-result: |
-    Должен появится авторизованный пользователь
+    Пользователь успешно авторизован и перенесен в лобби (https://codebattle.hexlet.io/#lobby)
 
 - summary: |
     Проверка восстановления пароля
@@ -69,9 +67,11 @@
   steps:
     - Нажать на 'Sing in'
     - Нажать на  'Forgot your password?'
-    - Нажать на 'Submit'
+    - Перейти по ссылке из письма
+    - Ввести новый пароль
+    - Подтвердить смену пароля
   expected-result: |
-    Должен появится авторизованный пользователь
+    Пароль успешно изменен
 
 - summary: |
     Проверка смены пароля у пользователя
@@ -213,6 +213,8 @@
     Любой авторизованный пользователь может перейти в сообщество
     codebattle в discord
   prerequisites: |
+    У пользователя должен быть аккаунт на discord
+    Пользователь авторизован в discord
     Открыто лобби у пользователя (https://codebattle.hexlet.io/#lobby)
   test-data: |
     нет
@@ -270,6 +272,8 @@
   requirement: |
     Любой пользователь может пройти авторизацию через github
   prerequisites: |
+    У пользователя должен быть аккаунт на GitHub
+    Пользователь авторизован в GitHub
     Открыта начальная страница (https://codebattle.hexlet.io)
   test-data: |
     нет
@@ -307,7 +311,7 @@
   test-data: |
     нет
   steps:
-    - Нажать Show, если есть такая игра в настоящем времени
+    - Нажать Show рядом с выбранной игрой
   expected-result: |
     Должна открыться игра других двух игроков, которые играют в настоящем времени
 
@@ -321,6 +325,7 @@
     нет
   steps:
     - Нажимаем CREATE A GAME
+    - Оставляем настройки игры по умолчанию
     - В Game Type выбираем With a bot
     - Нажимаем Create battle
   expected-result: |
@@ -338,6 +343,7 @@
     нет
   steps:
     - Нажимаем CREATE A GAME
+    - Оставляем настройки игры по умолчанию
     - В Game Type выбираем With a friend
     - В Choose opponent указываем никнейм changenametest
     - Нажимаем Create invite
@@ -358,9 +364,10 @@
     нет
   steps:
     - Нажимаем CREATE A GAME
+    - Оставляем настройки игры по умолчанию
     - В Game Type выбираем With other users
     - Нажимаем Create battle
-    - Вторым игроком нажимаем fight
+    - Вторым игроком нажимаем fight напротив игры, которую создал первый игрок
   expected-result: |
     Должна запуститься игра против второго игрока
 
@@ -374,6 +381,7 @@
     нет
   steps:
     - Нажимаем CREATE A GAME
+    - Оставляем настройки игры по умолчанию
     - В Game Type выбираем With a bot
     - Нажимаем Create battle
     - Во время игры нажимаем на Give Up
@@ -392,6 +400,7 @@
     нет
   steps:
     - Нажимаем CREATE A GAME
+    - Оставляем настройки игры по умолчанию
     - В Game Type выбираем With a friend
     - В Choose opponent указываем никнейм changenametest
     - Нажимаем Create invite
@@ -452,6 +461,7 @@
     нет
   steps:
     - Нажимаем CREATE A GAME
+    - Оставляем настройки игры по умолчанию
     - В Game Type выбираем With a bot
     - Нажимаем Create battle
     - Нажать на выбранный язык программирования на данный момент
@@ -477,7 +487,7 @@
     Верстка должна подстроиться под иной формат окна
 
 - summary: |
-    Проверка одинаковое ли время у пользователей для решения задачи
+    Проверка на одинаковое время у пользователей для решения задачи
   requirement: |
     У пользователей на решения задачи должно быть одинаковое время
   prerequisites: >
@@ -487,6 +497,7 @@
     нет
   steps:
     - Нажимаем CREATE A GAME
+    - Оставляем настройки игры по умолчанию
     - В Game Type выбираем With a friend
     - В Choose opponent указываем никнейм changenametest
     - Нажимаем Create invite
@@ -497,7 +508,7 @@
     одинаковое время на решение задачи
 
 - summary: |
-    Проверка закончится ли игра, если время для решения задачи закончится
+    Проверка завершения игры, если время для решения задачи закончится
   requirement: |
     Игра должна завершиться, если время для решения задачи закончится
   prerequisites: >
@@ -507,6 +518,7 @@
     нет
   steps:
     - Нажимаем CREATE A GAME
+    - Оставляем настройки игры по умолчанию
     - В Game Type выбираем With a friend
     - В Choose opponent указываем никнейм changenametest
     - Нажимаем Create invite
@@ -527,6 +539,7 @@
     нет
   steps:
     - Нажимаем CREATE A GAME
+    - Оставляем настройки игры по умолчанию
     - В Game Type выбираем With a friend
     - В Choose opponent указываем никнейм changenametest
     - Нажимаем Create invite
@@ -551,3 +564,42 @@
     - Удалям учетную запись
   expected-result: |
     В настройках должна быть возможность удалить учетную запись
+
+- summary: |
+    Проверка сценария в случае победы в игре
+  requirement: >
+    В случае победы игра должна остановиться, и должна появитсья
+    надпись свидетельствующая о победе в игре
+  prerequisites: |
+    Открыта начальная страница (https://codebattle.hexlet.io)
+  steps:
+    - Нажимаем CREATE A GAME
+    - В Choose task by name or tags выбираем add_two_number
+    - Остальные настройки игры оставляем по умолчанию
+    - В Game Type выбираем With a bot
+    - Нажимаем Create battle
+    - Выбираем язык Node.js
+    - В качестве решения указываем "const solution = (n) => {return
+      n.toString().split('').redice((acc, a) => {return acc + Number(a);},
+      0);};"
+    - Нажимаем Run
+  expected-result: >
+    Должна пояивться надпись "Woohoo, you're Champion!!!!!", игра
+    должна завершиться
+
+- summary: |
+    Проверка сценария в случае победы в игре
+  requirement: >
+    В случае поражении игра должна остановиться, и должна появитсья
+    надпись свидетельствующая о поражении в игре
+  prerequisites: |
+    Открыта начальная страница (https://codebattle.hexlet.io)
+  steps:
+    - Нажимаем CREATE A GAME
+    - Оставляем настройки игры по умолчанию
+    - В Game Type выбираем With a bot
+    - Нажимаем Create battle
+    - Ждем, когда бот решит задачу
+  expected-result: >
+    Должна пояивться надпись "If you read this you've lost the game", игра
+    должна завершиться
