@@ -572,6 +572,7 @@
     надпись свидетельствующая о победе в игре
   prerequisites: |
     Открыта начальная страница (https://codebattle.hexlet.io)
+
   steps:
     - Нажимаем CREATE A GAME
     - В Choose task by name or tags выбираем add_two_number
@@ -583,23 +584,25 @@
       n.toString().split('').redice((acc, a) => {return acc + Number(a);},
       0);};"
     - Нажимаем Run
-  expected-result: >
+  expected-result: |
     Должна пояивться надпись "Woohoo, you're Champion!!!!!", игра
     должна завершиться
 
 - summary: |
-    Проверка сценария в случае победы в игре
+    Проверка сценария в случае поражения в игре
   requirement: >
     В случае поражении игра должна остановиться, и должна появитсья
     надпись свидетельствующая о поражении в игре
   prerequisites: |
     Открыта начальная страница (https://codebattle.hexlet.io)
+  test-data: |
+    нет
   steps:
     - Нажимаем CREATE A GAME
     - Оставляем настройки игры по умолчанию
     - В Game Type выбираем With a bot
     - Нажимаем Create battle
     - Ждем, когда бот решит задачу
-  expected-result: >
+  expected-result: |
     Должна пояивться надпись "If you read this you've lost the game", игра
     должна завершиться
