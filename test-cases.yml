@@ -572,7 +572,6 @@
     надпись свидетельствующая о победе в игре
   prerequisites: |
     Открыта начальная страница (https://codebattle.hexlet.io)
-
   steps:
     - Нажимаем CREATE A GAME
     - В Choose task by name or tags выбираем add_two_number
